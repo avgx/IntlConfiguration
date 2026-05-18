@@ -1,0 +1,75 @@
+[
+  {
+    "id": "1",
+    "name": "Map 1",
+    "layers": [
+      {
+        "id": "1",
+        "mapId": "1",
+        "name": "Layer 1",
+        "width": 800,
+        "height": 578,
+        "zoomMin": 0.25,
+        "zoomMax": 4,
+        "zoomDef": 1,
+        "zoomStep": 0.25,
+        "lat_br": 0.0,
+        "lat_tr": 0.0,
+        "lon_bl": 0.0,
+        "lon_tl": 0.0,
+        "lon_c": 0.0,
+        "points": [
+          {
+            "id": "CAM:1",
+            "layerId": "1",
+            "mapId": "1",
+            "x": 536,
+            "y": 104,
+            "angle": 0,
+            "latitude": 0.0,
+            "longitude": 0.0
+          },
+          {
+            "id": "REGION:1.1",
+            "layerId": "1",
+            "mapId": "1",
+            "x": 689,
+            "y": 244,
+            "angle": 0,
+            "latitude": 0.0,
+            "longitude": 0.0
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "mapId": "1",
+        "name": "Layer 2",
+        "width": 800,
+        "height": 578,
+        "zoomMin": 0.25,
+        "zoomMax": 4,
+        "zoomDef": 1,
+        "zoomStep": 0.25,
+        "points": [
+          {
+            "id": "REGION:1.1",
+            "layerId": "2",
+            "mapId": "1",
+            "x": 607,
+            "y": 217,
+            "angle": 0
+          },
+          {
+            "id": "CAM:1",
+            "layerId": "2",
+            "mapId": "1",
+            "x": 398,
+            "y": 221,
+            "angle": 0
+          }
+        ]
+      }
+    ]
+  }
+]

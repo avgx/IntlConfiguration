@@ -1,0 +1,62 @@
+[
+  {
+    "type": "CAM",
+    "id": "CAM:3",
+    "extId": "3",
+    "name": "Camera 3",
+    "regionId": "1.1",
+    "regionName": "Region 1.1",
+    "displayId": "2",
+    "displayName": "Display 2",
+    "zoneId": "1",
+    "zoneName": "Zone 1",
+    "monitorId": "3",
+    "monitorName": "Monitor 3",
+    "state": {
+      "id": "alarmed",
+      "type": "ALARM",
+      "fullState": "ALARMED|ARMED"
+    },
+    "presets": []
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:1",
+    "extId": "1",
+    "name": "Camera 1",
+    "regionId": "1.1",
+    "regionName": "Region 1.1",
+    "displayId": "1",
+    "displayName": "Display 1",
+    "zoneId": "1",
+    "zoneName": "Zone 1",
+    "monitorId": "2",
+    "monitorName": "Monitor 2",
+    "state": {
+      "id": "alarmed",
+      "type": "ALARM",
+      "fullState": "ALARMED|ARMED"
+    },
+    "presets": []
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:2",
+    "extId": "2",
+    "name": "Camera 2",
+    "regionId": "1.2",
+    "regionName": "Region 1.2",
+    "displayId": "1",
+    "displayName": "Display 1",
+    "zoneId": "1",
+    "zoneName": "Zone 1",
+    "monitorId": "1",
+    "monitorName": "Monitor 1",
+    "state": {
+      "id": "alarmed",
+      "type": "ALARM",
+      "fullState": "ALARMED|ARMED"
+    },
+    "presets": []
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "type": "CAM",
+    "id": "CAM:12",
+    "extId": "12",
+    "name": "Camera 12",
+    "displayId": "1",
+    "displayName": "Display 1",
+    "monitorId": "1",
+    "monitorName": "Monitor 1",
+    "state": { "id": "alarmed_recording", "type": "ALARM", "fullState": "ALARMED,ARMED,RECORDING" },
+    "presets": []
+  },
+  {
+    "type": "STREAMING_SERVER",
+    "id": "STREAMING_SERVER:1",
+    "extId": "1",
+    "name": "RTSP Server 1",
+    "port": "555",
+    "cams": "1;2;"
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:1",
+    "extId": "1",
+    "name": "Camera 1",
+    "displayId": "1",
+    "displayName": "Display 1",
+    "monitorId": "1",
+    "monitorName": "Monitor 1",
+    "telemetryId": "1.1",
+    "speakerId": "SPEAKER:1",
+    "micId": "MIC:1",
+    "state": { "id": "alarmed_recording", "type": "ALARM", "fullState": "ALARMED,ARMED,RECORDING" },
+    "presets": []
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:2",
+    "extId": "2",
+    "name": "Camera 2",
+    "displayId": "1",
+    "displayName": "Display 1",
+    "monitorId": "1",
+    "monitorName": "Monitor 1",
+    "state": { "id": "alarmed_recording", "type": "ALARM", "fullState": "ALARMED,ARMED,RECORDING" },
+    "presets": []
+  }
+]

@@ -1,0 +1,108 @@
+[
+  {
+    "type": "CAM",
+    "id": "CAM:7",
+    "extId": "7",
+    "name": "Camera 7",
+    "state": { "id": "alarmed_recording", "type": "ALARM", "fullState": "ALARMED,ARMED,RECORDER_ON,RECORDING" },
+    "presets": []
+  },
+  {
+    "type": "MACRO",
+    "id": "MACRO:1",
+    "extId": "1",
+    "name": "Start Recording",
+    "state": { "id": "normal", "type": "NORMAL", "fullState": null }
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:5",
+    "extId": "5",
+    "name": "Camera 5",
+    "regionId": "1.1",
+    "state": { "id": "alarmed_recording", "type": "ALARM", "fullState": "ALARMED,ARMED,RECORDER_ON,RECORDING" },
+    "presets": []
+  },
+  {
+    "type": "MACRO",
+    "id": "MACRO:3",
+    "extId": "3",
+    "name": "Arm All",
+    "state": { "id": "normal", "type": "NORMAL", "fullState": null }
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:6",
+    "extId": "6",
+    "name": "Camera 6 fisheye",
+    "regionId": "1.1",
+    "state": { "id": "alarmed_recording", "type": "ALARM", "fullState": "ALARMED,ARMED,RECORDER_ON,RECORDING" },
+    "presets": []
+  },
+  {
+    "type": "MACRO",
+    "id": "MACRO:2",
+    "extId": "2",
+    "name": "Stop Recording",
+    "state": { "id": "normal", "type": "NORMAL", "fullState": null }
+  },
+  {
+    "type": "STREAMING_SERVER",
+    "id": "STREAMING_SERVER:1",
+    "extId": "1",
+    "name": "RTSP Server 1",
+    "state": { "id": "normal", "type": "NORMAL", "fullState": null },
+    "port": "555",
+    "cams": "1;2;3;4;5;6;7;"
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:3",
+    "extId": "3",
+    "name": "Camera 3 [0.0, 0.0, 0]",
+    "regionId": "1.2",
+    "state": { "id": "armed_recording", "type": "NORMAL", "fullState": "ARMED,RECORDING" },
+    "presets": []
+  },
+  {
+    "type": "MACRO",
+    "id": "MACRO:5",
+    "extId": "5",
+    "name": "Test Push Notification",
+    "state": { "id": "normal", "type": "NORMAL", "fullState": null }
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:4",
+    "extId": "4",
+    "name": "Camera 4",
+    "regionId": "1.1",
+    "state": { "id": "armed_recording", "type": "NORMAL", "fullState": "ARMED,RECORDING" },
+    "presets": []
+  },
+  {
+    "type": "MACRO",
+    "id": "MACRO:4",
+    "extId": "4",
+    "name": "Disarm All",
+    "state": { "id": "normal", "type": "NORMAL", "fullState": null }
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:1",
+    "extId": "1",
+    "name": "Camera 1",
+    "regionId": "1.1",
+    "state": { "id": "alarmed_recording", "type": "ALARM", "fullState": "ALARMED,ARMED,RECORDER_ON,RECORDING" },
+    "presets": []
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:2",
+    "extId": "2",
+    "name": "Camera 2",
+    "regionId": "1.2",
+    "state": { "id": "alarmed_recording", "type": "ALARM", "fullState": "ALARMED,ARMED,RECORDER_ON,RECORDING" },
+    "presets": []
+  }
+]

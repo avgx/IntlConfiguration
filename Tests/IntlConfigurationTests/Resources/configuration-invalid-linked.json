@@ -1,0 +1,223 @@
+[
+  {
+    "type": "CAM",
+    "id": "CAM:9",
+    "extId": "9",
+    "name": "Camera 9",
+    "displayId": "1",
+    "monitorId": "1",
+    "state": {
+      "id": "alarmed_recording",
+      "type": "ALARM",
+      "fullState": "ALARMED,ARMED,RECORDING"
+    },
+    "presets": []
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:7",
+    "extId": "7",
+    "name": "Camera 7",
+    "displayId": "1",
+    "monitorId": "1",
+    "state": {
+      "id": "alarmed_recording",
+      "type": "ALARM",
+      "fullState": "ALARMED,ARMED,RECORDING"
+    },
+    "linkedObjects": "GRAY:",
+    "presets": []
+  },
+  {
+    "type": "MACRO",
+    "id": "MACRO:1",
+    "extId": "1",
+    "name": "SENSOR ON",
+    "state": {
+      "id": "normal",
+      "type": "NORMAL",
+      "fullState": null
+    }
+  },
+  {
+    "type": "DISPLAY",
+    "id": "DISPLAY:1",
+    "extId": "1",
+    "name": "Display 1",
+    "displayId": "1",
+    "state": {
+      "id": "normal",
+      "type": "NORMAL",
+      "fullState": null
+    }
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:8",
+    "extId": "8",
+    "name": "Camera 8",
+    "displayId": "1",
+    "monitorId": "1",
+    "state": {
+      "id": "armed_recording",
+      "type": "NORMAL",
+      "fullState": "ARMED,RECORDING"
+    },
+    "presets": []
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:5",
+    "extId": "5",
+    "name": "Camera 5",
+    "displayId": "1",
+    "monitorId": "1",
+    "state": {
+      "id": "alarmed_recording",
+      "type": "ALARM",
+      "fullState": "ALARMED,ARMED,RECORDING"
+    },
+    "presets": []
+  },
+  {
+    "type": "MACRO",
+    "id": "MACRO:3",
+    "extId": "3",
+    "name": "RELAY ON",
+    "state": {
+      "id": "normal",
+      "type": "NORMAL",
+      "fullState": null
+    }
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:6",
+    "extId": "6",
+    "name": "Camera 6",
+    "displayId": "1",
+    "monitorId": "1",
+    "state": {
+      "id": "alarmed_recording",
+      "type": "ALARM",
+      "fullState": "ALARMED,ARMED,RECORDING"
+    },
+    "linkedObjects": "GRELE:",
+    "presets": []
+  },
+  {
+    "type": "MACRO",
+    "id": "MACRO:2",
+    "extId": "2",
+    "name": "SENSOR OFF",
+    "state": {
+      "id": "normal",
+      "type": "NORMAL",
+      "fullState": null
+    }
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:3",
+    "extId": "3",
+    "name": "Camera 3",
+    "displayId": "1",
+    "monitorId": "1",
+    "state": {
+      "id": "alarmed_recording",
+      "type": "ALARM",
+      "fullState": "ALARMED,ARMED,RECORDING"
+    },
+    "presets": []
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:4",
+    "extId": "4",
+    "name": "Camera 4",
+    "displayId": "1",
+    "monitorId": "1",
+    "state": {
+      "id": "alarmed_recording",
+      "type": "ALARM",
+      "fullState": "ALARMED,ARMED,RECORDING"
+    },
+    "presets": []
+  },
+  {
+    "type": "MACRO",
+    "id": "MACRO:4",
+    "extId": "4",
+    "name": "RELAY OFF",
+    "state": {
+      "id": "normal",
+      "type": "NORMAL",
+      "fullState": null
+    }
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:1",
+    "extId": "1",
+    "name": "Camera 1",
+    "displayId": "1",
+    "monitorId": "1",
+    "state": {
+      "id": "alarmed_recording",
+      "type": "ALARM",
+      "fullState": "ALARMED,ARMED,RECORDING"
+    },
+    "presets": []
+  },
+  {
+    "type": "CAM",
+    "id": "CAM:2",
+    "extId": "2",
+    "name": "Camera 2",
+    "displayId": "1",
+    "monitorId": "1",
+    "state": {
+      "id": "alarmed_recording",
+      "type": "ALARM",
+      "fullState": "ALARMED,ARMED,RECORDING"
+    },
+    "linkedObjects": "CAM_VMDA_DETECTOR:1",
+    "presets": []
+  },
+  {
+    "type": "FIRSERVER",
+    "id": "FIRSERVER:1",
+    "extId": "1",
+    "name": "Face recognition server 1",
+    "cams": "3;4;",
+    "state": {
+      "id": "normal",
+      "type": "NORMAL",
+      "fullState": null
+    }
+  },
+  {
+    "type": "MONITOR",
+    "id": "MONITOR:1",
+    "extId": "1",
+    "name": "Monitor 1",
+    "displayId": "1",
+    "monitorId": "1",
+    "state": {
+      "id": "normal",
+      "type": "NORMAL",
+      "fullState": null
+    },
+    "camList": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ]
+  }
+]
