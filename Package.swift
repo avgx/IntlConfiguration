@@ -21,6 +21,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/avgx/RequestResponse", from: "2.0.0"),
         .package(url: "https://github.com/avgx/SafeEnum", from: "1.0.0"),
+        .package(url: "https://github.com/avgx/URLKit", from: "1.0.0"),
     ],
     targets: [
         .target(
@@ -32,7 +33,10 @@ let package = Package(
         ),
         .testTarget(
             name: "IntlConfigurationTests",
-            dependencies: ["IntlConfiguration"],
+            dependencies: [
+                "IntlConfiguration",
+                .product(name: "URLKit", package: "URLKit"),
+            ],
             resources: [.process("Resources")]
         ),
     ]

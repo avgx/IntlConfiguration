@@ -14,7 +14,7 @@ public struct Entity: Codable, Identifiable, Equatable, Sendable {
     public let telemetryId: ObjectID?
     public let name: String?
     public let state: EntityState?
-    public let cams: String?
+    public let cams: ObjectIDList?
     public let port: String?
 
     public let regionName: String?

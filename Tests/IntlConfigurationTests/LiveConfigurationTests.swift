@@ -1,13 +1,13 @@
 import Foundation
 import Testing
+import URLKit
 @testable import IntlConfiguration
 
 private enum LiveTest {
-    /// Opt-in: set `INTL_LIVE=1` plus `INTL_URL` / `INTL_USER` / `INTL_PASSWORD` in `.env`.
+    /// Opt-in: set  `INTL_URL` / `INTL_USER` / `INTL_PASSWORD` in `.env`.
     static var isConfigured: Bool {
         let env = DotEnv.merged
-        guard env["INTL_LIVE"] == "1",
-              let url = env["INTL_URL"], !url.isEmpty,
+        guard let url = env["INTL_URL"], !url.isEmpty,
               let user = env["INTL_USER"], !user.isEmpty,
               let password = env["INTL_PASSWORD"], !password.isEmpty,
               URL(string: url) != nil
@@ -26,11 +26,7 @@ func liveConfigurationDecodes() async throws {
     let user = env["INTL_USER"]!
     let password = env["INTL_PASSWORD"]!
 
-    var requestURL = baseURL
-    if requestURL.path.isEmpty || requestURL.path == "/" {
-        requestURL.append(path: "web2")
-    }
-    requestURL.append(path: "secure/configuration")
+    let requestURL = baseURL.appendingPath("secure/configuration")
     var components = URLComponents(url: requestURL, resolvingAgainstBaseURL: false)!
     components.queryItems = [URLQueryItem(name: "pageItems", value: "1000000")]
     guard let finalURL = components.url else {
@@ -42,7 +38,8 @@ func liveConfigurationDecodes() async throws {
     request.httpMethod = "GET"
     let credentials = "\(user):\(password)"
     request.setValue("Basic \(Data(credentials.utf8).base64EncodedString())", forHTTPHeaderField: "Authorization")
-
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    
     let data: Data
     let statusCode: Int
     do {

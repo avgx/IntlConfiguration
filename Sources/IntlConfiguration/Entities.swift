@@ -19,9 +19,8 @@ extension Array where Element == Entity {
             .filter { $0.port != nil && $0.cams != nil }
             .reduce(into: [AccessPoint: Int]()) { res, entity in
                 guard let port = entity.port, let portInt = Int(port) else { return }
-                guard let cams = entity.cams, !cams.isEmpty else { return }
-                cams
-                    .split(separator: ";")
+                guard let cams = entity.cams, !cams.values.isEmpty else { return }
+                cams.values
                     .map { AccessPoint(objectClass: EntityType.CAM.rawValue, objectId: String($0)) }
                     .forEach { res[$0] = portInt }
             }
