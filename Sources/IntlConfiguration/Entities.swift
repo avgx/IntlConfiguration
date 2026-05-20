@@ -10,8 +10,26 @@ extension Array where Element == Entity {
 
     public func named() -> [AccessPoint: String] {
         reduce(into: [:]) { res, entity in
-            res[entity.id] = cleanDisplayName(entity.name ?? entity.id)
+            let raw = stripMarkupTags(entity.name ?? entity.id)
+            res[entity.id] = Location.Parser.cleanName(raw).trimmingCharacters(in: .whitespacesAndNewlines)
         }
+    }
+
+    public func cameras() -> [Camera] {
+        let rtspPorts = rtsp()
+        return filter(\.isCamera).map { Camera.from($0, rtspPorts: rtspPorts) }
+    }
+
+    public func locations() -> [AccessPoint: Location] {
+        filter(\.isCamera).reduce(into: [:]) { res, cam in
+            if let loc = Location.Parser.parse(cam.name ?? "") {
+                res[cam.id] = loc
+            }
+        }
+    }
+
+    public func faceRecognitionServers() -> [Entity] {
+        filter(\.isFaceRecognitionServer)
     }
 
     public func rtsp() -> [AccessPoint: Int] {
@@ -127,15 +145,12 @@ extension Array where Element == Entity {
     }
 }
 
-private func cleanDisplayName(_ raw: String) -> String {
+private func stripMarkupTags(_ raw: String) -> String {
     var s = raw
     while let start = s.firstIndex(of: "<"), let end = s[start...].firstIndex(of: ">") {
         s.removeSubrange(start...end)
     }
-    if let bracket = s.firstIndex(of: "["), let end = s[bracket...].firstIndex(of: "]") {
-        s.removeSubrange(bracket...end)
-    }
-    return s.trimmingCharacters(in: .whitespacesAndNewlines)
+    return s
 }
 
 private func compareObjectID(_ a: ObjectID, _ b: ObjectID) -> Bool {

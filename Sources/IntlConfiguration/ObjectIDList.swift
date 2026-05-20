@@ -20,6 +20,8 @@ public struct ObjectIDList: Equatable, Sendable, ExpressibleByStringLiteral {
             .filter { !$0.isEmpty }
     }
 
+    public var isEmpty: Bool { values.isEmpty }
+
     public var first: ObjectID? {
         values.first
     }
