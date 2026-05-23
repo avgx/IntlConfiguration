@@ -1,8 +1,29 @@
 # IntlConfiguration
 
-Swift package for **Axxon Intellect** topology configuration: decode `secure/configuration`, aggregate cameras and groups, and describe HTTP endpoints for [RequestResponse](https://github.com/avgx/RequestResponse).
+Swift package for topology configuration: decode `secure/configuration`, aggregate cameras and groups, and describe HTTP endpoints for [RequestResponse](https://github.com/avgx/RequestResponse).
 
-Intellect-only models live here. Account-scoped IDs, stream URLs, and One/Next types belong in upper layers.
+Intl-only models live here.
+
+Shared wire types (`AccessPoint`, `ObjectID`, …) come from [IntlWireFormat](https://github.com/avgx/IntlWireFormat).
+
+## Project layout
+
+```
+Sources/IntlConfiguration/
+├── API/              EntityApi, FloorPlanApi, MacroApi, WebserverApi
+├── Configuration/    Entity, EntityState, aggregations on [Entity]
+├── Camera/           Camera
+├── Location/         Location, coordinate parsing from names
+├── FloorPlan/        FloorPlan
+├── Macro/            Macro
+└── Primitive/        NamedGroup, ArmState
+
+Tests/IntlConfigurationTests/
+├── Decoding/         mirrors source domains
+├── Integration/      live server tests (.env)
+├── Support/          FixtureSupport, DotEnv
+└── Resources/        JSON fixtures
+```
 
 ## Requirements
 
@@ -44,12 +65,7 @@ let rtspPorts = entities.rtsp()
 
 ### AccessPoint
 
-Intellect object reference: `ObjectClass:ObjectID`, e.g. `CAM:1`, `MIC:2`.
-
-```swift
-let ap = AccessPoint(objectClass: "CAM", objectId: "1")  // "CAM:1"
-ap.components?.objectClass  // "CAM"
-```
+From **IntlWireFormat** — Intellect object reference: `ObjectClass:ObjectID`, e.g. `CAM:1`, `MIC:2`.
 
 ### Entity
 
@@ -119,7 +135,7 @@ All return `Request<...>` for RequestResponse.
 swift test
 ```
 
-Fixtures under `Tests/IntlConfigurationTests/Resources/`. Live tests use `.env` (see `.env.example`).
+Fixtures under `Tests/IntlConfigurationTests/Resources/`. Decoding tests mirror `Sources/` domains under `Decoding/`. Live tests in `Integration/` use `.env` (see `.env.example`).
 
 ## License
 
