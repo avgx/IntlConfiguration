@@ -1,4 +1,5 @@
 import Foundation
+import IntlWireFormat
 
 extension Array where Element == Entity {
     public func linkedObjects() -> [AccessPoint: AccessPoint] {

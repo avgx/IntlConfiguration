@@ -1,4 +1,5 @@
 import Foundation
+import IntlWireFormat
 
 public struct FloorPlan: Codable, Sendable, Identifiable, Equatable {
     public let id: String

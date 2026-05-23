@@ -1,4 +1,5 @@
 import Foundation
+import IntlWireFormat
 
 public struct Camera: Identifiable, Equatable, Hashable, Codable, Sendable {
     public let id: AccessPoint

@@ -1,4 +1,5 @@
 import Foundation
+import IntlWireFormat
 import RequestResponse
 
 private let acceptImage: [String: String] = ["Accept": "image/*"]

@@ -1,4 +1,5 @@
 import Foundation
+import IntlWireFormat
 import RequestResponse
 
 public enum EntityApi {

@@ -1,10 +1,6 @@
 import Foundation
+import IntlWireFormat
 import SafeEnum
-
-/// from intl: extId | monitorId | regionId : "1" , "1.1"
-public typealias ObjectID = String
-/// from intl: for CAM:1 class is "CAM" (see `AccessPoint.components`)
-public typealias ObjectClass = String
 
 public struct Entity: Codable, Identifiable, Equatable, Sendable {
     public let type: SafeEnum<EntityType>

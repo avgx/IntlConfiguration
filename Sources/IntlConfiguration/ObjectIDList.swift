@@ -1,4 +1,5 @@
 import Foundation
+import IntlWireFormat
 
 /// Intellect object id field: one value (`"3"`) or several separated by `;` (`"38;45;18"`).
 public struct ObjectIDList: Equatable, Sendable, ExpressibleByStringLiteral {
