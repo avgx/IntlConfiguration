@@ -1,0 +1,11 @@
+{
+  "type": "CAM",
+  "id": "CAM:1",
+  "extId": "1",
+  "name": "Camera 1",
+  "state": {
+    "id": "normal",
+    "type": "NORMAL",
+    "fullState": "NORMAL"
+  }
+}

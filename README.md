@@ -122,7 +122,8 @@ Location.Parser.cleanName("Camera 1 [55.7558, 37.6173]")  // "Camera 1"
 
 | Enum | Endpoints |
 |------|-----------|
-| `EntityApi` | `configuration()`, `test()`, `objectState(id:)` |
+| `EntityApi` | `configuration()`, `test()`, `objectState(id:)`, `entity(id:)`, `objectStateImage(id:)` |
+| `ObjectClassApi` | `states(objectClass:)` |
 | `MacroApi` | `list()`, `execute(id:)`, `execute(object:id:)` |
 | `FloorPlanApi` | `list()`, `layerImage(layerId:mapId:)`, `objectActions(id:)` |
 | `WebserverApi` | `versionTime()` (proxied video config) |

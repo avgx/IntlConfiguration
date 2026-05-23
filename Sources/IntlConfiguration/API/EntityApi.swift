@@ -16,4 +16,17 @@ public enum EntityApi {
     public static func objectState(id: AccessPoint) -> Request<EntityState> {
         Request(path: "secure/configuration/\(id)/state/")
     }
+
+    /// Single configuration object, e.g. `GET secure/configuration/CAM:1/`.
+    public static func entity(id: AccessPoint) -> Request<Entity> {
+        Request(path: "secure/configuration/\(id)/")
+    }
+
+    /// Current state icon for an object instance.
+    public static func objectStateImage(id: AccessPoint) -> Request<Data> {
+        Request(
+            path: "secure/configuration/\(id)/state/image.png",
+            headers: ["Accept": "image/*"]
+        )
+    }
 }
