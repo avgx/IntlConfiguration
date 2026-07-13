@@ -1,36 +1,51 @@
 import Foundation
 
-public struct Location: Codable, Sendable, Equatable, CustomDebugStringConvertible {
+public struct Location : Codable, Sendable, Equatable, Hashable, CustomDebugStringConvertible {
+    
     public let latitude: Double
     public let longitude: Double
     public let heading: Double?
-
+    
     public init(latitude: Double, longitude: Double, heading: Double? = nil) {
         self.latitude = latitude
         self.longitude = longitude
         self.heading = heading
     }
-
+    
     public var debugDescription: String {
         "[\(latitude), \(longitude)]"
+    }
+    
+    public init?(latitude: String?, longitude: String?, azimuth: String?) {
+        guard let latStr = latitude, let lonStr = longitude else {
+            return nil
+        }
+        
+        /// fix server locate ``, -> .``
+        func parseDouble(_ str: String?) -> Double? {
+            guard var s = str else { return nil }
+            s = s.replacingOccurrences(of: ",", with: ".")
+            return Double(s)
+        }
+        
+        guard let latitudeVal = parseDouble(latStr), let longitudeVal = parseDouble(lonStr) else {
+            return nil
+        }
+        
+        if latitudeVal == 0 && longitudeVal == 0 {
+            return nil
+        }
+        
+        var headingVal: Double? = nil
+        if let azStr = azimuth {
+            headingVal = parseDouble(azStr)
+        }
+        
+        self.init(latitude: latitudeVal, longitude: longitudeVal, heading: headingVal)
     }
 }
 
 extension Location {
-    public static func create(latitude: String?, longitude: String?, azimuth: String?) -> Location? {
-        guard let lat = latitude, let lon = longitude else { return nil }
-        let latFix = lat.replacingOccurrences(of: ",", with: ".")
-        let lonFix = lon.replacingOccurrences(of: ",", with: ".")
-        let heading = azimuth != "0,000000"
-            ? azimuth?.replacingOccurrences(of: ",", with: ".")
-            : nil
-        let latF = Double(latFix) ?? 0
-        let lonF = Double(lonFix) ?? 0
-        guard latF != 0 || lonF != 0 else { return nil }
-        let headingF: Double? = heading.flatMap { Double($0) }
-        return Location(latitude: latF, longitude: lonF, heading: headingF)
-    }
-
     public struct Parser {
         static func matches(for regex: String, in text: String) -> [String] {
             do {

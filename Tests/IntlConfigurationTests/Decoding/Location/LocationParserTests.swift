@@ -34,11 +34,11 @@ import Testing
 }
 
 @Test func createFromFloorPlanStrings() {
-    let loc = Location.create(latitude: "55,7558", longitude: "37,6173", azimuth: "0,000000")
+    let loc = Location(latitude: "55,7558", longitude: "37,6173", azimuth: "0,000000")
     #expect(loc?.latitude == 55.7558)
     #expect(loc?.longitude == 37.6173)
-    #expect(loc?.heading == nil)
-    let loc2 = Location.create(latitude: "55,7558", longitude: "37,6173", azimuth: "90,5")
+    #expect(loc?.heading == 0)
+    let loc2 = Location(latitude: "55,7558", longitude: "37,6173", azimuth: "90,5")
     #expect(loc2?.latitude == 55.7558)
     #expect(loc2?.longitude == 37.6173)
     #expect(loc2?.heading == 90.5)

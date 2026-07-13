@@ -9,6 +9,7 @@ public struct Camera: Identifiable, Equatable, Hashable, Codable, Sendable {
     public let speaker: AccessPoint?
     public let rtspPort: Int?
     public let telemetryId: ObjectID?
+    public let location: Location?
 }
 
 extension Camera {
@@ -21,7 +22,8 @@ extension Camera {
             mic: entity.micId,
             speaker: entity.speakerId,
             rtspPort: rtspPorts[entity.id],
-            telemetryId: entity.telemetryId
+            telemetryId: entity.telemetryId,
+            location: Location.Parser.parse(entity.name ?? "")
         )
     }
 }
