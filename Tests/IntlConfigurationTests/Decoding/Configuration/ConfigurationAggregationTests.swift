@@ -14,7 +14,7 @@ import Testing
     #expect(entities.zones().count == 1)
     #expect(entities.regions().count == 2)
     let zone = entities.zones().first!
-    #expect(zone.id == "1")
+    #expect(zone.id == "ZONE:1")
     #expect(zone.list.count == 3)
 }
 
@@ -48,6 +48,6 @@ import Testing
     let entities = try JSONDecoder().decode([Entity].self, from: json)
     let zones = entities.zones()
     #expect(zones.count == 2)
-    #expect(zones.first { $0.id == "1" }?.list.count == 2)
-    #expect(zones.first { $0.id == "2" }?.list.count == 1)
+    #expect(zones.first { $0.id == "ZONE:1" }?.list.count == 2)
+    #expect(zones.first { $0.id == "ZONE:2" }?.list.count == 1)
 }

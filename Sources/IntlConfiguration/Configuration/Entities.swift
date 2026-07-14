@@ -53,7 +53,7 @@ extension Array where Element == Entity {
                 .filter { !($0.camList?.isEmpty ?? true) }
                 .map { m in
                     let list = m.camList?.map { AccessPoint(objectClass: EntityType.CAM.rawValue, objectId: $0) } ?? []
-                    return NamedGroup(id: m.extId, name: m.name ?? "monitor.\(m.extId)", list: list)
+                    return NamedGroup(id: m.id, name: m.name ?? "monitor.\(m.extId)", list: list)
                 }
                 .sorted { $0.name < $1.name }
         }
@@ -64,7 +64,8 @@ extension Array where Element == Entity {
         let cameras = filter(\.isCamera)
         return monitorsNamed.map { id, name in
             let list = cameras.filter { $0.monitorIds.contains(id) }.map(\.id)
-            return NamedGroup(id: id, name: name, list: list)
+            let groupID = AccessPoint(objectClass: EntityType.MONITOR.rawValue, objectId: id)
+            return NamedGroup(id: groupID, name: name, list: list)
         }
         .sorted { $0.name < $1.name }
     }
@@ -77,7 +78,7 @@ extension Array where Element == Entity {
                 .filter { !($0.camList?.isEmpty ?? true) }
                 .map { m in
                     let list = m.camList?.map { AccessPoint(objectClass: EntityType.CAM.rawValue, objectId: $0) } ?? []
-                    return NamedGroup(id: m.extId, name: m.name ?? "display.\(m.extId)", list: list)
+                    return NamedGroup(id: m.id, name: m.name ?? "display.\(m.extId)", list: list)
                 }
                 .sorted { $0.name < $1.name }
         }
@@ -88,7 +89,8 @@ extension Array where Element == Entity {
         let cameras = filter(\.isCamera)
         return displaysNamed.map { id, name in
             let list = cameras.filter { $0.displayIds.contains(id) }.map(\.id)
-            return NamedGroup(id: id, name: name, list: list)
+            let groupID = AccessPoint(objectClass: EntityType.DISPLAY.rawValue, objectId: id)
+            return NamedGroup(id: groupID, name: name, list: list)
         }
         .sorted { $0.name < $1.name }
     }
@@ -101,7 +103,8 @@ extension Array where Element == Entity {
         let cameras = filter(\.isCamera)
         return regionsNamed.map { id, name in
             let list = cameras.filter { $0.regionId == id }.map(\.id)
-            return NamedGroup(id: id, name: name, list: list)
+            let groupID = AccessPoint(objectClass: EntityType.REGION.rawValue, objectId: id)
+            return NamedGroup(id: groupID, name: name, list: list)
         }
         .sorted { compareObjectID($0.id, $1.id) }
     }
@@ -115,7 +118,8 @@ extension Array where Element == Entity {
         let cameras = filter(\.isCamera)
         return zonesNamed.map { id, name in
             let list = cameras.filter { $0.zoneIds.contains(id) }.map(\.id)
-            return NamedGroup(id: id, name: name, list: list)
+            let groupID = AccessPoint(objectClass: "ZONE", objectId: id)
+            return NamedGroup(id: groupID, name: name, list: list)
         }
         .sorted { compareObjectID($0.id, $1.id) }
     }
@@ -135,7 +139,8 @@ extension Array where Element == Entity {
                 .filter { $0.value == id }
                 .map(\.key)
                 .sorted { compareObjectID($0, $1) }
-            return NamedGroup(id: id, name: name, list: regionIds)
+            let groupID = AccessPoint(objectClass: "ZONE", objectId: id)
+            return NamedGroup(id: groupID, name: name, list: regionIds)
         }
     }
 
