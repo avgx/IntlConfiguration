@@ -38,6 +38,22 @@
             "angle": 0,
             "latitude": 0.0,
             "longitude": 0.0
+          },
+          {
+            "id": "LINK:null",
+            "layerId": "1",
+            "mapId": "1",
+            "x": 10,
+            "y": 10,
+            "angle": 0
+          },
+          {
+            "id": "TITLE:1",
+            "layerId": "1",
+            "mapId": "1",
+            "x": 100,
+            "y": 100,
+            "angle": 0
           }
         ]
       },

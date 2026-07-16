@@ -22,10 +22,16 @@ public struct FloorPlanLayer: Codable, Sendable {
     public let zoomDef: Double
     public let zoomStep: Double
     public let points: [FloorPlanPoint]
+
+    /// Pins with a usable access point (drops e.g. `LINK:null`).
+    public var validPoints: [FloorPlanPoint] {
+        points.filter { $0.id.isValidAccessPoint }
+    }
 }
 
 public struct FloorPlanPoint: Codable, Sendable {
-    public let id: ObjectID
+    /// Intellect access point on the plan, e.g. `CAM:2`, `TITLE:1`.
+    public let id: AccessPoint
     public let layerId: ObjectID
     public let mapId: ObjectID
     public let x: Double
