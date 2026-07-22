@@ -126,7 +126,7 @@ Location.Parser.cleanName("Camera 1 [55.7558, 37.6173]")  // "Camera 1"
 | `ObjectClassApi` | `states(objectClass:)` |
 | `MacroApi` | `list()`, `execute(id:)`, `execute(object:id:)` |
 | `FloorPlanApi` | `list()`, `layerImage(layerId:mapId:)`, `objectActions(id:)` |
-| `WebserverApi` | `versionTime()` (proxied video config) |
+| `WebserverApi` | `versionTime()` — `GET secure/video/config.properties` (Web1 probe via web2; parse `Server`/`Date` with `VersionTimeProbe`) |
 
 All return `Request<...>` for RequestResponse.
 
