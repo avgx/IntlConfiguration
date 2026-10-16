@@ -43,3 +43,10 @@ import Testing
     #expect(loc2?.longitude == 37.6173)
     #expect(loc2?.heading == 90.5)
 }
+
+@Test func stringInitRejectsOutOfRangeCoordinates() {
+    #expect(Location(latitude: "158", longitude: "0", azimuth: nil) == nil)
+    #expect(Location(latitude: "0", longitude: "200", azimuth: nil) == nil)
+    #expect(Location(latitude: "90", longitude: "180", azimuth: nil) != nil)
+    #expect(Location(latitude: "0", longitude: "0", azimuth: nil) == nil)
+}
