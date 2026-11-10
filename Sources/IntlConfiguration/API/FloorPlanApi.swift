@@ -9,9 +9,12 @@ public enum FloorPlanApi {
         Request(path: "secure/kartas/")
     }
 
+    /// Background only: polygons come from `FloorPlanPoint.polygon`, so they can follow alarm state.
+    /// Servers without the `polygons` parameter ignore it.
     public static func layerImage(layerId: ObjectID, mapId: ObjectID) -> Request<Data> {
         Request(
             path: "secure/kartas/\(mapId)/layers/\(layerId)/image.png",
+            query: [("polygons", "false")],
             headers: acceptImage
         )
     }
