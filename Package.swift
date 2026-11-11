@@ -38,6 +38,7 @@ let package = Package(
             dependencies: [
                 "IntlConfiguration",
                 .product(name: "URLKit", package: "URLKit"),
+                .product(name: "SafeEnum", package: "SafeEnum"),
             ],
             resources: [.process("Resources")]
         ),

@@ -1,6 +1,7 @@
 import Foundation
 import IntlWireFormat
 import RequestResponse
+import SafeEnum
 
 private let acceptImage: [String: String] = ["Accept": "image/*"]
 
@@ -11,8 +12,20 @@ public enum FloorPlanApi {
 
     /// Background only: polygons come from `FloorPlan.Point.polygon`, so they can follow alarm state.
     /// Servers without the `polygons` parameter ignore it.
-    public static func layerImage(layerId: ObjectID, mapId: ObjectID) -> Request<Data> {
-        Request(
+    /// The address depends only on whether the background is SVG: `image.svg` for SVG, `image.png` for everything else
+    /// (including a missing or unknown format).
+    public static func layerImage(
+        layerId: ObjectID,
+        mapId: ObjectID,
+        backgroundFormat: SafeEnum<FloorPlan.BackgroundFormat>? = nil
+    ) -> Request<Data> {
+        if backgroundFormat?.value == .svg {
+            return Request(
+                path: "secure/kartas/\(mapId)/layers/\(layerId)/image.svg",
+                headers: acceptImage
+            )
+        }
+        return Request(
             path: "secure/kartas/\(mapId)/layers/\(layerId)/image.png",
             query: [("polygons", "false")],
             headers: acceptImage
