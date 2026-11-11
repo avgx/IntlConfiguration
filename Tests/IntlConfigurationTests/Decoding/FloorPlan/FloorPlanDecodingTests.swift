@@ -32,7 +32,7 @@ import Testing
     #expect(point.hidden == false)
     let polygon = try #require(point.polygon)
     #expect(polygon.vertices.count == 6)
-    #expect(polygon.vertices[0] == FloorPlanVertex(x: 99, y: 158))
+    #expect(polygon.vertices[0] == FloorPlan.Vertex(x: 99, y: 158))
     #expect(polygon.color == "#46009600")
     #expect(polygon.alarmColor == "#46C80000")
     #expect(polygon.hideFrame == false)
@@ -100,7 +100,7 @@ import Testing
 @Test func knownViewTypeCodesMapToCases() {
     let codes = [0, 1, 5, 6, 7, 8, 15, 16, 17, 18, 19, 20, 21]
     for code in codes {
-        #expect(FloorPlanViewType(rawValue: code)?.rawValue == code)
+        #expect(FloorPlan.ViewType(rawValue: code)?.rawValue == code)
     }
 }
 
@@ -110,7 +110,7 @@ import Testing
     #expect(polygons?.1 == "false")
 }
 
-private func polygonFixtureLayer() throws -> FloorPlanLayer {
+private func polygonFixtureLayer() throws -> FloorPlan.Layer {
     let plans: [FloorPlan] = try FixtureSupport.decode("floor-plan-polygons")
     return try #require(plans.first?.layers.first)
 }
