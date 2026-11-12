@@ -38,6 +38,21 @@ extension FloorPlan {
             points = try container.decode([Point].self, forKey: .points)
         }
 
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(id, forKey: .id)
+            try container.encode(mapId, forKey: .mapId)
+            try container.encode(name, forKey: .name)
+            try container.encode(width, forKey: .width)
+            try container.encode(height, forKey: .height)
+            try container.encode(zoomMin, forKey: .zoomMin)
+            try container.encode(zoomMax, forKey: .zoomMax)
+            try container.encode(zoomDef, forKey: .zoomDef)
+            try container.encode(zoomStep, forKey: .zoomStep)
+            try container.encodeIfPresent(backgroundFormat, forKey: .backgroundFormat)
+            try container.encode(points, forKey: .points)
+        }
+
         /// Pins with a usable access point (drops e.g. `LINK:null`).
         public var validPoints: [Point] {
             points.filter { $0.id.isValidAccessPoint }

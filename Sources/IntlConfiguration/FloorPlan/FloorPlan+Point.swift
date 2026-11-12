@@ -57,6 +57,25 @@ extension FloorPlan {
             link = try? container.decodeIfPresent(Link.self, forKey: .link)
         }
 
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(id, forKey: .id)
+            try container.encode(layerId, forKey: .layerId)
+            try container.encode(mapId, forKey: .mapId)
+            try container.encode(x, forKey: .x)
+            try container.encode(y, forKey: .y)
+            try container.encode(angle, forKey: .angle)
+            try container.encodeIfPresent(viewType, forKey: .viewType)
+            try container.encodeIfPresent(hidden, forKey: .hidden)
+            try container.encodeIfPresent(width, forKey: .width)
+            try container.encodeIfPresent(height, forKey: .height)
+            try container.encodeIfPresent(polygon, forKey: .polygon)
+            try container.encodeIfPresent(title, forKey: .title)
+            try container.encodeIfPresent(comment, forKey: .comment)
+            try container.encodeIfPresent(info, forKey: .info)
+            try container.encodeIfPresent(link, forKey: .link)
+        }
+
         /// Reads the current string names. Falls back to the numeric codes of the previous format.
         private static func decodeViewType(from container: KeyedDecodingContainer<CodingKeys>) -> SafeEnum<ViewType>? {
             if let name = try? container.decodeIfPresent(String.self, forKey: .viewType) {
