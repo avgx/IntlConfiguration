@@ -1,4 +1,5 @@
 import Foundation
+import SafeEnum
 import Testing
 @testable import IntlConfiguration
 
@@ -52,6 +53,59 @@ import Testing
     #expect(entities[0].monitorIds == ["2", "3"])
     #expect(entities[0].displayIds == ["4", "5"])
     #expect(entities[0].zoneIds == ["1", "2"])
+}
+
+@Test func decodesStateFlagsArmAndRecording() {
+    let recording = EntityState(
+        id: SafeEnum(.armed_recording),
+        type: SafeEnum(.normal),
+        fullState: nil
+    )
+    #expect(recording.armState == .arm)
+    #expect(recording.isRecording)
+    #expect(recording.flags.compactMap(\.value) == [.armed, .recording])
+
+    let alarmed = EntityState(
+        id: SafeEnum(.alarmed),
+        type: SafeEnum(.alarm),
+        fullState: "ALARMED|ARMED"
+    )
+    #expect(alarmed.armState == .arm)
+    #expect(alarmed.isAlarmed)
+    #expect(alarmed.flags.compactMap(\.value) == [.alarmed, .armed])
+
+    let comma = EntityState(
+        id: SafeEnum(.alarmed_recording),
+        type: SafeEnum(.alarm),
+        fullState: "ALARMED,ARMED,RECORDER_ON,RECORDING"
+    )
+    #expect(comma.isRecording)
+    #expect(comma.flags.compactMap(\.value) == [.alarmed, .armed, .recorderOn, .recording])
+
+    let disarmed = EntityState(id: SafeEnum(.connected), type: nil, fullState: "DISARMED")
+    #expect(disarmed.armState == .disarm)
+    #expect(!disarmed.isRecording)
+
+    let offline = EntityState(id: SafeEnum(.disconnected), type: SafeEnum(.alarm), fullState: nil)
+    #expect(offline.isDisconnected)
+    #expect(offline.armState == nil)
+    #expect(!offline.isAlarmed)
+
+    let unknown = EntityState(id: SafeEnum(rawValue: "widget_alarmed"), type: nil, fullState: nil)
+    #expect(unknown.id?.value == nil)
+    #expect(unknown.isAlarmed)
+}
+
+@Test func decodesStateWebSocketFrame() throws {
+    let json = """
+    {"objectId":"CAM:1","action":"state","state":"armed_recording","x":null,"y":null,"ts":"2026-11-10T12:02:21.634+03:00"}
+    """.data(using: .utf8)!
+    let message = try JSONDecoder().decode(StateMessage.self, from: json)
+    #expect(message.objectId == "CAM:1")
+    #expect(message.action == "state")
+    #expect(message.state?.value == .armed_recording)
+    #expect(message.ts == "2026-11-10T12:02:21.634+03:00")
+    #expect(StateApi.feed().path == "secure/ws/states/")
 }
 
 @Test func decodesUnknownEntityTypeWithoutFailing() throws {

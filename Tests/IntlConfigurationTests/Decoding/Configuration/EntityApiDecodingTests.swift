@@ -6,7 +6,7 @@ import Testing
     let entity: Entity = try FixtureSupport.decode("entity-single")
     #expect(entity.id == "CAM:1")
     #expect(entity.name == "Camera 1")
-    #expect(entity.state?.id == "normal")
+    #expect(entity.state?.id?.rawValue == "normal")
 }
 
 @Test func decodesObjectClassStates() throws {
